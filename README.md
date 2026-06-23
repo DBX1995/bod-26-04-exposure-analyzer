@@ -24,10 +24,10 @@ Traditional vulnerability scanners report CVSS scores in isolation. A critical C
 Internet Gateway (Source)
         |
         v
-VPC Network Access Analyzer Scope
+Network Insights Path Analysis (per instance)
         |
         v
-Security Group Targets (Destination)
+EC2 Instance Network Interfaces (Destination)
         |
         v
 Boto3 Analysis Script (analyzer.py)
@@ -42,7 +42,12 @@ Risk Priority Report (JSON + Console Output)
 
 - Python 3.8+
 - AWS CLI configured with appropriate credentials (`aws configure`)
-- IAM permissions: `ec2:CreateNetworkInsightsAccessScope`, `ec2:StartNetworkInsightsAccessScopeAnalysis`, `ec2:GetNetworkInsightsAccessScopeAnalysisFindings`, `ec2:DescribeInstances`, `ec2:DescribeSecurityGroups`
+- IAM permissions: `ec2:DescribeInstances
+ec2:CreateNetworkInsightsPath
+ec2:StartNetworkInsightsAnalysis
+ec2:DescribeNetworkInsightsAnalyses
+ec2:DeleteNetworkInsightsAnalysis
+ec2:DeleteNetworkInsightsPath`
 - An existing VPC with an attached Internet Gateway
 
 ---
